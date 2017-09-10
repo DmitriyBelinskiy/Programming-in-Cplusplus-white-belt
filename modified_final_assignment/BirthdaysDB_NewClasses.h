@@ -26,7 +26,7 @@ ostream& operator<<(ostream& stream, const Date& date);
 
 /*Создаем новые классы FullName, Date, Database*/
 
-//Класс для полного имени
+//Класс для полного имени 
 class FullName {
 public:
 	//Парсим имя из потока
