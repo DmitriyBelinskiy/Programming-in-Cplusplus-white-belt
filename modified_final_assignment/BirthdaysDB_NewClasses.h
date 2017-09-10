@@ -55,7 +55,7 @@ public:
 
 private:
 	string first_name, last_name, full_name;
-	//Проверяем на правильность ввода и убираем тире
+	//Проверяем на правильность ввода
 	void CheckNextSymbolAndSkip(stringstream &input, const string& new_name) const {
 		input.unget();
 		if ( input.get() != '-')
