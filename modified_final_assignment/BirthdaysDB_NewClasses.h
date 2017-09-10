@@ -1,5 +1,5 @@
-/* Заголовочный файл в котором мы создаем новые классы Date, FullName и Database, 
-а также перегружаем операторы ввода, вывода и сравнения для них */
+/* Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» РІ РєРѕС‚РѕСЂРѕРј РјС‹ СЃРѕР·РґР°РµРј РЅРѕРІС‹Рµ РєР»Р°СЃСЃС‹ Date, FullName Рё Database, 
+Р° С‚Р°РєР¶Рµ РїРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂС‹ РІРІРѕРґР°, РІС‹РІРѕРґР° Рё СЃСЂР°РІРЅРµРЅРёСЏ РґР»СЏ РЅРёС… */
 
 #pragma once
 #include "stdafx.h"
@@ -24,12 +24,12 @@ istream& operator>>(istream& stream, Date& date);
 ostream& operator<<(ostream& stream, const FullName& name);
 ostream& operator<<(ostream& stream, const Date& date);
 
-/*Создаем новые классы FullName, Date, Database*/
+/*РЎРѕР·РґР°РµРј РЅРѕРІС‹Рµ РєР»Р°СЃСЃС‹ FullName, Date, Database*/
 
-//Класс для полного имени 
+//РљР»Р°СЃСЃ РґР»СЏ РїРѕР»РЅРѕРіРѕ РёРјРµРЅРё
 class FullName {
 public:
-	//Парсим имя из потока
+	//РџР°СЂСЃРёРј РёРјСЏ РёР· РїРѕС‚РѕРєР°
 	void ParseName(const string& new_name) {
 		stringstream temp(new_name);
 		getline(temp, first_name, '-');
@@ -37,25 +37,25 @@ public:
 		getline(temp, last_name);
 		full_name = first_name + " " + last_name;
 	}
-	//Методы для вывода имени и фамилии по отдельности
+	//РњРµС‚РѕРґС‹ РґР»СЏ РІС‹РІРѕРґР° РёРјРµРЅРё Рё С„Р°РјРёР»РёРё РїРѕ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
 	string GetFirstName() const {
 		return first_name;
 	}
 	string GetLastName() const {
 		return last_name;
 	}
-	//Метод для вывода имени и фамилии вместе
+	//РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРјРµРЅРё Рё С„Р°РјРёР»РёРё РІРјРµСЃС‚Рµ
 	string GetFullName() const {
 		return full_name;
 	}
-	//Возвращаем размер переменной
+	//Р’РѕР·РІСЂР°С‰Р°РµРј СЂР°Р·РјРµСЂ РїРµСЂРµРјРµРЅРЅРѕР№
 	int size() const {
 		return full_name.size();
 	}
 
 private:
 	string first_name, last_name, full_name;
-	//Проверяем на правильность ввода и убираем тире
+	//РџСЂРѕРІРµСЂСЏРµРј РЅР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРѕРґР° Рё СѓР±РёСЂР°РµРј С‚РёСЂРµ
 	void CheckNextSymbolAndSkip(stringstream &input, const string& new_name) const {
 		input.unget();
 		if ( input.get() != '-')
@@ -63,10 +63,10 @@ private:
 	}
 };
 
-//Класс даты рождения
+//РљР»Р°СЃСЃ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ
 class Date {
 public:
-	//Парсим дату из потока
+	//РџР°СЂСЃРёРј РґР°С‚Сѓ РёР· РїРѕС‚РѕРєР°
 	void ParseDate(const string& new_date) {
 		int temp_year, temp_month, temp_day;
 		stringstream temp(new_date);
@@ -81,7 +81,7 @@ public:
 			if (trash.size() != 0)
 				throw logic_error("Wrong date format: " + new_date);
 		}
-		//Записываем данные в переменные из приватного поля
+		//Р—Р°РїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РїРµСЂРµРјРµРЅРЅС‹Рµ РёР· РїСЂРёРІР°С‚РЅРѕРіРѕ РїРѕР»СЏ
 		year = temp_year;
 		if (temp_month < 1 || temp_month > 12)
 			throw logic_error("Month value is invalid: " + to_string(temp_month));
@@ -89,10 +89,10 @@ public:
 		if (temp_day < 1 || temp_day > 31)
 			throw logic_error("Day value is invalid: " + to_string(temp_day));
 		else day = temp_day;
-		//Обращаемся к приватному методу для формирования даты в строковой переменной
+		//РћР±СЂР°С‰Р°РµРјСЃСЏ Рє РїСЂРёРІР°С‚РЅРѕРјСѓ РјРµС‚РѕРґСѓ РґР»СЏ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РґР°С‚С‹ РІ СЃС‚СЂРѕРєРѕРІРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
 		SetDate(year, month, day);
 	}
-	//Методы для выводы даты по частям(год или месяц или день)
+	//РњРµС‚РѕРґС‹ РґР»СЏ РІС‹РІРѕРґС‹ РґР°С‚С‹ РїРѕ С‡Р°СЃС‚СЏРј(РіРѕРґ РёР»Рё РјРµСЃСЏС† РёР»Рё РґРµРЅСЊ)
 	int GetYear() const {
 		return year;
 	}
@@ -102,11 +102,11 @@ public:
 	int GetDay() const {
 		return day;
 	}
-	//Метод для получения даты	
+	//РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґР°С‚С‹	
 	string GetDate() const {
 		return date;
 	}
-	//Возвращаем размер переменной
+	//Р’РѕР·РІСЂР°С‰Р°РµРј СЂР°Р·РјРµСЂ РїРµСЂРµРјРµРЅРЅРѕР№
 	int size() const {
 		return date.size();
 	}
@@ -115,7 +115,7 @@ private:
 	int year, month, day;
 	string date;
 
-	//Формируем дату в строковой переменной в нужном формате
+	//Р¤РѕСЂРјРёСЂСѓРµРј РґР°С‚Сѓ РІ СЃС‚СЂРѕРєРѕРІРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ РІ РЅСѓР¶РЅРѕРј С„РѕСЂРјР°С‚Рµ
 	void SetDate(const int& year, const int& month, const int& day) {
 		stringstream temp2;
 		temp2 << setw(4) << setfill('0') << year << '.';
@@ -123,7 +123,7 @@ private:
 		temp2 << setw(2) << setfill('0') << day;
 		temp2 >> date;
 	}
-	//Делаем проверку на наличие тире и пропускаем его.
+	//Р”РµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° РЅР°Р»РёС‡РёРµ С‚РёСЂРµ Рё РїСЂРѕРїСѓСЃРєР°РµРј РµРіРѕ.
 	void CheckNextSymbolAndSkip(stringstream &input, const string& date) const {
 		if (input.peek() == '-')
 			input.ignore(1);
@@ -132,14 +132,14 @@ private:
 	}
 };
 
-//Создаём основной класс для хранения базы данных дат рождений с полными именами
+//РЎРѕР·РґР°С‘Рј РѕСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РґР°С‚ СЂРѕР¶РґРµРЅРёР№ СЃ РїРѕР»РЅС‹РјРё РёРјРµРЅР°РјРё
 class Database {
 public:
-	//Метод для добавления новой даты рождения
+	//РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ
 	void AddName(const Date& date, const FullName& name) {
 		birthdays_db[date].insert(name);
 	}
-	//Метод для удаления имении из определенной даты
+	//РњРµС‚РѕРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РёРјРµРЅРёРё РёР· РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РґР°С‚С‹
 	bool DeleteName(const Date& date, const FullName& name) {
 		if (birthdays_db.count(date) != 0 && birthdays_db.at(date).count(name) != 0) {
 			birthdays_db[date].erase(name);
@@ -147,7 +147,7 @@ public:
 		}
 		else return false;
 	}
-	//Метод для удаления даты со всеми днями рождения
+	//РњРµС‚РѕРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РґР°С‚С‹ СЃРѕ РІСЃРµРјРё РґРЅСЏРјРё СЂРѕР¶РґРµРЅРёСЏ
 	int DeleteDate(const Date& date) {
 		if (birthdays_db.count(date) != 0) {
 			const int number_of_names = birthdays_db[date].size();
@@ -156,14 +156,14 @@ public:
 		}
 		else return 0;
 	}
-	//Метод для поиска имен в базе событий на конкретную дату рождения
+	//РњРµС‚РѕРґ РґР»СЏ РїРѕРёСЃРєР° РёРјРµРЅ РІ Р±Р°Р·Рµ СЃРѕР±С‹С‚РёР№ РЅР° РєРѕРЅРєСЂРµС‚РЅСѓСЋ РґР°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ
 	set<FullName> Findnames(const Date& date) const {
 		if (birthdays_db.count(date) != 0)
 			return birthdays_db.at(date);
 		else return {};
 	}
 
-	//Метод для поиска имен в базе событий на конкретную дату рождения
+	//РњРµС‚РѕРґ РґР»СЏ РїРѕРёСЃРєР° РёРјРµРЅ РІ Р±Р°Р·Рµ СЃРѕР±С‹С‚РёР№ РЅР° РєРѕРЅРєСЂРµС‚РЅСѓСЋ РґР°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ
 	Date Finddate(const FullName& name) const {
 		for (const auto& names : birthdays_db) {
 			if (names.second.count(name) != 0)
@@ -171,7 +171,7 @@ public:
 			else return {};
 		}
 	}
-	//Метод для вывода всех дней рождения и имен
+	//РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РІСЃРµС… РґРЅРµР№ СЂРѕР¶РґРµРЅРёСЏ Рё РёРјРµРЅ
 	void PrintAll() const {
 		for (const auto& date : birthdays_db) {
 			for (const auto& name : date.second)
@@ -180,21 +180,21 @@ public:
 	}
 
 private:
-	//Для хранения данных используем контейнеры map и set
+	//Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РёСЃРїРѕР»СЊР·СѓРµРј РєРѕРЅС‚РµР№РЅРµСЂС‹ map Рё set
 	map<Date, set<FullName>> birthdays_db;
 };
 
 
-/*ПЕРЕГРУЖАЕМ ОПЕРАТОРЫ ввода, вывода и сравнения для классов Date и FullName*/
+/*РџР•Р Р•Р“Р РЈР–РђР•Рњ РћРџР•Р РђРўРћР Р« РІРІРѕРґР°, РІС‹РІРѕРґР° Рё СЃСЂР°РІРЅРµРЅРёСЏ РґР»СЏ РєР»Р°СЃСЃРѕРІ Date Рё FullName*/
 
-//Перегружаем оператор меньше для автоматической сортировки в map и set для класса FullName
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РјРµРЅСЊС€Рµ РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё РІ map Рё set РґР»СЏ РєР»Р°СЃСЃР° FullName
 bool operator<(const FullName& lhs, const FullName& rhs) {
-	// сравним даты с помощью вектора
+	// СЃСЂР°РІРЅРёРј РґР°С‚С‹ СЃ РїРѕРјРѕС‰СЊСЋ РІРµРєС‚РѕСЂР°
 	return vector<string>{lhs.GetLastName(), lhs.GetFirstName()} <
 		vector<string>{rhs.GetLastName(), rhs.GetFirstName()};
 }
 
-//Перегружаем оператор ввода из потока для класса FullName
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° РёР· РїРѕС‚РѕРєР° РґР»СЏ РєР»Р°СЃСЃР° FullName
 istream& operator>>(istream& stream, FullName& name) {
 	string new_name;
 	stream >> new_name;
@@ -202,14 +202,14 @@ istream& operator>>(istream& stream, FullName& name) {
 	return stream;
 }
 
-//Перегружаем оператор вывода в поток для класса FullName
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° РІ РїРѕС‚РѕРє РґР»СЏ РєР»Р°СЃСЃР° FullName
 ostream& operator<<(ostream& stream, const FullName& name) {
 	//const string to_print = name.GetFullName();
 	stream << name.GetFullName();
 	return stream;
 }
 
-//Перегружаем оператор ввода из потока для класса Date
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° РёР· РїРѕС‚РѕРєР° РґР»СЏ РєР»Р°СЃСЃР° Date
 istream& operator>>(istream& stream, Date& date) {
 	string new_date;
 	stream >> new_date;
@@ -217,16 +217,16 @@ istream& operator>>(istream& stream, Date& date) {
 	return stream;
 }
 
-//Перегружаем оператор вывода в поток для класса Date
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° РІ РїРѕС‚РѕРє РґР»СЏ РєР»Р°СЃСЃР° Date
 ostream& operator<<(ostream& stream, const Date& date) {
 //	const string to_print = date.GetDate();
 	stream << date.GetDate();
 	return stream;
 }
 
-//Перегружаем оператор меньше для автоматической сортировки в map и set для класса Date
+//РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РјРµРЅСЊС€Рµ РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё РІ map Рё set РґР»СЏ РєР»Р°СЃСЃР° Date
 bool operator<(const Date& lhs, const Date& rhs) {
-	// сравним даты с помощью вектора
+	// СЃСЂР°РІРЅРёРј РґР°С‚С‹ СЃ РїРѕРјРѕС‰СЊСЋ РІРµРєС‚РѕСЂР°
 	return vector<int>{lhs.GetYear(), lhs.GetMonth(), lhs.GetDay()} <
 		vector<int>{rhs.GetYear(), rhs.GetMonth(), rhs.GetDay()};
 }
