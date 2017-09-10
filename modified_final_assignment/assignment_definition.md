@@ -72,5 +72,3 @@ Add IvanPetrov 1990-05-28
 
 ВЫВОД:
 Wrong name format: IvanPetrov
-
-
