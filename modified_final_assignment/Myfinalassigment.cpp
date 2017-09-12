@@ -4,18 +4,17 @@
 
 int main()
 {
-	//Обрабатываем исключения
 	try {
 		Database db;
 		string input_stream;
 		while (getline(cin, input_stream)) {
 			stringstream input(input_stream);
 			string command_name;
-			//вычленияем из входношо потока команду
+			//вычленияем из входного потока команду
 			input >> command_name;
 			Date date;
 			FullName name;
-			//Записываем в базу дату и события в ней
+			//Записываем в базу дату рождения и имя (Имя и Фамилия)
 			if (command_name == "Add") {
 				input >> name >> date;
 				db.AddName(date, name);
@@ -46,7 +45,7 @@ int main()
 				else
 					cout << "Deleted " << db.DeleteDate(date) << " names" << endl;
 			}
-			//Выводим на экран все даты и все события
+			//Выводим на экран все даты рождений с именами людей
 			else if (command_name == "Print") {
 				db.PrintAll();
 			}

@@ -156,14 +156,14 @@ public:
 		}
 		else return 0;
 	}
-	//Метод для поиска имен в базе событий на конкретную дату рождения
+	//Метод для поиска имен в базе на конкретную дату рождения
 	set<FullName> Findnames(const Date& date) const {
 		if (birthdays_db.count(date) != 0)
 			return birthdays_db.at(date);
 		else return {};
 	}
 
-	//Метод для поиска имен в базе событий на конкретную дату рождения
+	//Метод для поиска имен в базе на конкретную дату рождения
 	Date Finddate(const FullName& name) const {
 		for (const auto& names : birthdays_db) {
 			if (names.second.count(name) != 0)
